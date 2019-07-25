@@ -22,11 +22,15 @@ export interface IHeaderData {
 @Component({
   selector: 'app-root',
   template: `
-    test
+    http test
+    <input type="text" [(ngModel)]="url">
+    <input type="text" [(ngModel)]="token">
   `,
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  url = 'http://25ccda7f.ngrok.io/alfred/algorithms';
+  token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRfaWQiOiJqc24ifQ.NhBaJ3Zd92Ix6hJPxd0mj7koEEponjxWDKTm_UfnkcM';
   createHeaders(headerData?: any): HttpHeaders {
     let headers = new HttpHeaders();
     const tokenData: IHeaderData = {};
@@ -54,9 +58,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.makeGetReq({
-      url: 'http://25ccda7f.ngrok.io/alfred/algorithms',
+      url: this.url,
       // url: 'https://staging.imibot.ai/api/v1/moduledetails/?limit=1000',
-      headerData: {'auth-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRfaWQiOiJqc24ifQ.NhBaJ3Zd92Ix6hJPxd0mj7koEEponjxWDKTm_UfnkcM'}
+      headerData: {'auth-token': this.token}
     });
   }
 
