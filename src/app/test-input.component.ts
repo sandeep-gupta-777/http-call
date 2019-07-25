@@ -3,17 +3,17 @@ import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {BaseInputComponent} from './base-input/base-input.component';
 
 @Component({
-  selector: 'designer-quick-reply-button',
+  selector: 'app-quick-reply-button',
   template: `
     <input type="text" [ngModel]="value">
   `,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => BaseInputComponent),
+      useExisting: forwardRef(() => QuickReplyButtonComponent),
       multi: true,
     },
-  ],
+  ]
 })
 export class QuickReplyButtonComponent extends BaseInputComponent implements OnInit {
 

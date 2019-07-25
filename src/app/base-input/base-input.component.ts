@@ -1,7 +1,10 @@
-import { ChangeDetectorRef, Component, Injector, Input, OnInit, Type } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import {ChangeDetectorRef, Component, Injector, Input, Type} from '@angular/core';
+import {ControlValueAccessor} from '@angular/forms';
 
-@Component({ template: '' })
+@Component({
+  selector: 'app-base',
+  template: ' '
+})
 export class BaseInputComponent<T = any> implements ControlValueAccessor {
 
   // @Input()
@@ -13,7 +16,6 @@ export class BaseInputComponent<T = any> implements ControlValueAccessor {
   @Input()
   set value(value: T) {
     this._value = value;
-    debugger;
     this.notifyValueChange();
   }
 
