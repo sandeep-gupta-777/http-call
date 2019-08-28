@@ -1,4 +1,4 @@
-import {Component, OnInit, SecurityContext} from '@angular/core';
+import {Component, ElementRef, OnInit, SecurityContext, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -25,10 +25,12 @@ export interface IHeaderData {
     http test
     <input type="text" [(ngModel)]="url">
     <input type="text" [(ngModel)]="token">
+    <button (click)="send()">send</button>
+    <button #test2 (click)="log()">test</button>
   `,
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   url = 'http://25ccda7f.ngrok.io/alfred/algorithms';
   token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRfaWQiOiJqc24ifQ.NhBaJ3Zd92Ix6hJPxd0mj7koEEponjxWDKTm_UfnkcM';
   createHeaders(headerData?: any): HttpHeaders {
@@ -56,19 +58,12 @@ export class AppComponent implements OnInit {
 
   form: FormGroup;
 
-  ngOnInit(): void {
+  send(): void {
     this.makeGetReq({
       url: this.url,
-      // url: 'https://staging.imibot.ai/api/v1/moduledetails/?limit=1000',
       headerData: {'auth-token': this.token}
     });
   }
-
-  // createTestForm() {
-  //   return this.formBuilder.group({
-  //     name: 'test name',
-  //   });
-  // }
 
   makeGetReq<T>(reqObj: { url: string, headerData?: any, noValidateUser?: boolean }) {
     debugger;
@@ -78,5 +73,10 @@ export class AppComponent implements OnInit {
       .subscribe(() => {
         alert();
       });
+  }
+
+  @ViewChild('test2') test2: ElementRef;
+  log(){
+    console.log(this.test2);
   }
 }
