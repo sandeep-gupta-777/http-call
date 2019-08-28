@@ -4,17 +4,14 @@ import {AppComponent} from './app.component';
 import {RouterModule} from '@angular/router';
 import {TodosComponent} from './todos.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {QuickReplyButtonComponent} from './test-input.component';
-import {BaseInputComponent} from './base-input/base-input.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { MainFormComponent } from './main-form/main-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodosComponent,
-    QuickReplyButtonComponent,
-    BaseInputComponent
-    // BaseInputComponent,
+    MainFormComponent,
   ],
 
   // entryComponents:[

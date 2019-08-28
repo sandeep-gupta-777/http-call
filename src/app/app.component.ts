@@ -22,11 +22,11 @@ export interface IHeaderData {
 @Component({
   selector: 'app-root',
   template: `
-    http test
-    <input type="text" [(ngModel)]="url">
-    <input type="text" [(ngModel)]="token">
-    <button (click)="send()">send</button>
-    <button #test2 (click)="log()">test</button>
+    <ng-template #outer>
+      <input type="text" formControlName="outside">
+    </ng-template>
+
+    <app-main-form [template]="outer"></app-main-form>
   `,
   styleUrls: ['./app.component.scss']
 })
